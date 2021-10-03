@@ -1,0 +1,23 @@
+---
+  - name: Pull the latest docker image
+    hosts: localhost
+    tasks:
+      - name: login to docker hub
+        community.docker.docker_login:
+         username: zingalatej
+         password: March@2021
+
+      - name: Pull the latest image and build
+        community.docker.docker_image:
+          name: zingalatej/exercise
+          tag: updated
+          source: pull
+          pull:
+           platform: amd64
+      
+      - name: Run the pulled image
+        community.docker.docker_container:
+         name: flaskapp
+         image: zingalatej/exercise:updated
+         ports:
+         - "5000:5000"
