@@ -1,0 +1,22 @@
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
+variable "key_name" {}
+variable "private_key_path" {}
+variable "region" {
+    default ="ap-south-1"
+}
+
+provider "aws"{
+    access_key = var.aws_access_key
+    secret_key = var.aws_secret_key
+    region = var.region
+}
+
+resource "aws_instance" "Test"{
+    ami = "ami-0a23ccb2cdd9286bb"
+    instance_type = "t2.micro"
+    key_name = var.key_name
+
+    tags = {"Name": "Terraform2"}
+         
+}
