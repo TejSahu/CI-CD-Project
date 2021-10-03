@@ -4,8 +4,8 @@
     tasks:
       - name: login to docker hub
         community.docker.docker_login:
-         username: zingalatej
-         password: March@2021
+         username: name
+         password: password
 
       - name: Pull the latest image and build
         community.docker.docker_image:
